@@ -3,13 +3,13 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { Slot } from "@radix-ui/react-slot";
 
 const buttonVariants = tv({
-  base: "flex items-center justify-center gap-1.5 rounded-lg disabled:opacity-50 aria-disabled:hover:cursor-not-allowed disabled:hover:cursor-not-allowed disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:pointer-events-none",
+  base: "flex items-center justify-center gap-1.5 disabled:opacity-50 aria-disabled:cursor-not-allowed disabled:cursor-not-allowed disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:pointer-events-none not-disabled:cursor-pointer transition-colors transition-shadow",
   variants: {
     variant: {
       primary:
-        "h-12 px-5 bg-blue-base text-white text-md not-disabled:hover:bg-blue-dark hover:cursor-not-allowed",
+        "w-full h-12 rounded-lg px-5 bg-blue-base text-white text-md not-disabled:hover:bg-blue-dark",
       secondary:
-        "h-8 px2 bg-gray-20 text-gray-500 text-sm font-semibold not-disabled:hover:ring-1 not-disabled:hover:ring-blue-base",
+        "h-8 rounded-sm px-2 bg-gray-200 text-gray-500 text-sm font-semibold not-disabled:hover:ring-1 not-disabled:hover:ring-blue-base",
     },
   },
   defaultVariants: {

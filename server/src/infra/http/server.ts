@@ -9,6 +9,7 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 import { accessShortenUrlRoute } from './routes/access-shorten-url'
+import { ExportLinksRoute } from './routes/export-links'
 import { getShortenUrlsRoute } from './routes/get-shorten-urls'
 import { removeShortenUrlRoute } from './routes/remove-shorten-url'
 import { shortenUrlRoute } from './routes/shorten-url'
@@ -33,7 +34,10 @@ server.setErrorHandler((error, request, reply) => {
   })
 })
 
-server.register(fastifyCors, { origin: '*' })
+server.register(fastifyCors, {
+  origin: '*',
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+})
 
 server.register(fastifySwagger, {
   openapi: {
@@ -53,6 +57,7 @@ server.register(accessShortenUrlRoute)
 server.register(shortenUrlRoute)
 server.register(removeShortenUrlRoute)
 server.register(getShortenUrlsRoute)
+server.register(ExportLinksRoute)
 
 server.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running')
